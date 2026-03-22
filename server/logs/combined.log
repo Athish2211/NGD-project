@@ -1115,3 +1115,11 @@
 {"level":"info","message":"Client connected: WBudAvqsktGU-30OAAAC","service":"dynamic-pricing-api","timestamp":"2026-03-22T05:51:26.351Z"}
 {"level":"info","message":"Client disconnected: WBudAvqsktGU-30OAAAC","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:11:27.181Z"}
 {"level":"info","message":"Client connected: 2RbznAV6_SgXOf1TAAAE","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:11:27.910Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:20:00.701Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:20:00.701Z"}
+{"level":"info","message":"Price update completed. Updated 0 products","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:20:00.772Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:20:00.772Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:30:00.587Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:30:00.588Z"}
+{"level":"info","message":"Price update completed. Updated 0 products","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:30:00.662Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-03-22T08:30:00.662Z"}
