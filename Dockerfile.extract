@@ -1,0 +1,15 @@
+FROM node:16
+
+WORKDIR /app
+
+# Install only backend deps (keeps the extract image small-ish)
+COPY server/package*.json ./server/
+RUN cd server && npm ci
+
+# Copy extraction script + sample dataset
+COPY server ./server
+
+ENV NODE_ENV=production
+
+ENTRYPOINT ["node", "server/scripts/extract-products.js"]
+
