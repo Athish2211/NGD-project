@@ -92,8 +92,8 @@ async function startServer() {
     await connectDB();
     await connectRedis();
     
-    // Start pricing engine cron job (every 10 minutes)
-    cron.schedule('*/10 * * * *', async () => {
+    // Start pricing engine cron job (every 15 seconds)
+    cron.schedule('*/15 * * * * *', async () => {
       logger.info('Running pricing engine...');
       try {
         await pricingEngine.updateAllPrices(io);

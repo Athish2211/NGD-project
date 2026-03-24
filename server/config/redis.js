@@ -89,7 +89,9 @@ async function deleteCache(key) {
 
 async function incrementCounter(key, amount = 1) {
   try {
-    return await client.incrBy(key, amount);
+    const result = await client.incrBy(key, amount);
+    logger.debug(`Incremented counter ${key} by ${amount}, new value: ${result}`);
+    return result;
   } catch (error) {
     logger.error('Redis increment error:', error);
     return 0;
@@ -99,7 +101,9 @@ async function incrementCounter(key, amount = 1) {
 async function getCounter(key) {
   try {
     const value = await client.get(key);
-    return value ? parseInt(value) : 0;
+    const result = value ? parseInt(value) : 0;
+    logger.debug(`Got counter ${key}: ${result}`);
+    return result;
   } catch (error) {
     logger.error('Redis get counter error:', error);
     return 0;
