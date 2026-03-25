@@ -173,13 +173,24 @@ router.get('/dashboard', async (req, res) => {
       LIMIT 10
     `, userParams);
 
+    const totalRevenueTopProducts = topProductsResult.rows.reduce((sum, item) => sum + Number(item.revenue), 0);
+    const productCostDistribution = topProductsResult.rows
+      .filter(item => Number(item.revenue) > 0)
+      .map(item => ({
+        name: item.name,
+        value: Number(item.revenue),
+        percentage: totalRevenueTopProducts > 0 
+          ? Number(((Number(item.revenue) / totalRevenueTopProducts) * 100).toFixed(1)) 
+          : 0
+      }));
+
     res.json({
       total_products: activeProductsResult.rows[0].total_products,
       total_orders: userOrderTotals.rows[0].total_orders,
       total_revenue: userOrderTotals.rows[0].total_revenue,
       avg_order_value: userOrderTotals.rows[0].avg_order_value,
-      price_updates_today: 0,
       top_products: topProductsResult.rows,
+      product_cost_distribution: productCostDistribution,
       recent_orders: recentOrdersResult.rows,
       active_products: activeProductsResult.rows[0],
       today_orders: todayOrdersResult.rows[0],

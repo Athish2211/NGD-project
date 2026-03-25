@@ -31,7 +31,7 @@ const io = socketIo(server, {
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  max: 5000 // Increased from 100 to 5000 to prevent 429 errors during SPA navigation
 });
 
 // Middleware
@@ -92,8 +92,8 @@ async function startServer() {
     await connectDB();
     await connectRedis();
     
-    // Start pricing engine cron job (every 15 seconds)
-    cron.schedule('*/15 * * * * *', async () => {
+    // Start pricing engine cron job (every 1 minute)
+    cron.schedule('0 * * * * *', async () => {
       logger.info('Running pricing engine...');
       try {
         await pricingEngine.updateAllPrices(io);

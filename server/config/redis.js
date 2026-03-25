@@ -1,11 +1,11 @@
-const redis = require('redis');
+const { createClient } = require('redis');
 const logger = require('../utils/logger');
 
 let client;
 
 async function connectRedis() {
   try {
-    client = redis.createClient({
+    client = createClient({
       url: process.env.REDIS_URL || 'redis://localhost:6379'
     });
 

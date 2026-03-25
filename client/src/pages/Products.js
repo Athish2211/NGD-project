@@ -16,11 +16,26 @@ const Products = () => {
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
   const [sortBy, setSortBy] = useState('name');
   const [showFilters, setShowFilters] = useState(false);
-  const { joinProductRoom, leaveProductRoom } = useSocket();
+  const { socket, joinProductRoom, leaveProductRoom } = useSocket();
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    if (!socket) return;
+
+    const handleGlobalPriceUpdate = (data) => {
+      setProducts(prevProducts => prevProducts.map(p =>
+        String(p.id) === String(data.productId)
+          ? { ...p, current_price: data.newPrice }
+          : p
+      ));
+    };
+
+    socket.on('global-price-update', handleGlobalPriceUpdate);
+    return () => socket.off('global-price-update', handleGlobalPriceUpdate);
+  }, [socket]);
 
   useEffect(() => {
     filterAndSortProducts();
@@ -31,7 +46,7 @@ const Products = () => {
       setLoading(true);
       const response = await productsAPI.getAll();
       setProducts(response.data);
-      
+
       // Extract unique categories
       const uniqueCategories = [...new Set(response.data.map(p => p.category_name).filter(Boolean))];
       setCategories(uniqueCategories);
@@ -171,7 +186,7 @@ const Products = () => {
           {/* Filter Toggle */}
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
           >
             <Filter className="h-4 w-4" />
             <span>Filters</span>
@@ -281,28 +296,23 @@ const Products = () => {
                   </span>
                 )}
               </div>
-              
+
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-primary-600 font-medium">
                     {product.category_name}
                   </span>
-                  <div className="flex items-center space-x-1">
-                    {getPriceChangeIcon(product)}
-                    <span className={`text-xs font-medium ${getPriceChangeColor(product)}`}>
-                      {Math.abs(getPriceChangePercentage(product)).toFixed(1)}%
-                    </span>
-                  </div>
+
                 </div>
-                
+
                 <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                   {product.name}
                 </h3>
-                
+
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                   {product.description}
                 </p>
-                
+
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <p className="text-2xl font-bold text-gray-900">
@@ -314,25 +324,7 @@ const Products = () => {
                       </p>
                     )}
                   </div>
-                  <div className="text-right">
-                    <p className="text-xs text-gray-500">Stock</p>
-                    <p className="text-sm font-medium text-gray-900">
-                      {product.stock_quantity}
-                    </p>
-                  </div>
                 </div>
-
-                {/* Competitor Price Comparison */}
-                {product.avg_competitor_price && (
-                  <div className="pt-4 border-t border-gray-100">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-500">Avg competitor price</span>
-                      <span className="font-medium text-gray-900">
-                        {formatPrice(product.avg_competitor_price)}
-                      </span>
-                    </div>
-                  </div>
-                )}
               </div>
             </Link>
           ))}

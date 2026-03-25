@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { analyticsAPI, productsAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
-import { formatINR } from '../utils/display';
 import { useSocket } from '../contexts/SocketContext';
 import { 
   TrendingUp, 
@@ -222,11 +221,11 @@ const Analytics = () => {
   };
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(price);
-  };
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+  }).format(price);
+};
 
   const formatNumber = (num) => {
     if (num >= 1000000) {
@@ -276,9 +275,8 @@ const Analytics = () => {
         </div>
       </div>
 
-      {/* Dashboard Stats */}
       {dashboardData && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-soft">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
@@ -290,7 +288,7 @@ const Analytics = () => {
               {dashboardData.total_products || 0}
             </p>
             <p className="text-sm text-gray-500 mt-1">
-              Price updates today: {dashboardData.price_updates_today || 0}
+              Orders today: {dashboardData.today_orders?.total_orders || 0}
             </p>
           </div>
 
@@ -321,24 +319,6 @@ const Analytics = () => {
             </p>
             <p className="text-sm text-gray-500 mt-1">
               Per transaction
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow-soft">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-2">
-                <Activity className="h-5 w-5 text-danger-600" />
-                <span className="text-sm font-medium text-gray-600">Conversion Rate</span>
-              </div>
-            </div>
-            <p className="text-2xl font-bold text-gray-900">
-              {dashboardData.conversion_rate || 3.2}%
-            </p>
-            <p className="text-sm text-gray-500 mt-1">
-              <span className="flex items-center text-success-600">
-                <ArrowUp className="h-3 w-3 mr-1" />
-                0.5% from last week
-              </span>
             </p>
           </div>
         </div>

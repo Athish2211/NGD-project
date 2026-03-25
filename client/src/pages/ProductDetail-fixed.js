@@ -11,16 +11,14 @@ import {
   Package, 
   Clock, 
   BarChart3,
-  Star,
   Truck,
-  Shield,
-  ArrowLeft
+  Shield
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const { joinProductRoom, leaveProductRoom } = useSocket();
+  const { socket, joinProductRoom, leaveProductRoom } = useSocket();
   
   const [product, setProduct] = useState(null);
   const [demandMetrics, setDemandMetrics] = useState(null);
@@ -36,7 +34,32 @@ const ProductDetail = () => {
     return () => {
       leaveProductRoom(id);
     };
-  }, [id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, joinProductRoom, leaveProductRoom]);
+
+  useEffect(() => {
+    if (!socket) return;
+    
+    const handlePriceUpdate = (data) => {
+      if (String(data.productId) === String(id)) {
+        setCurrentPrice(data.newPrice);
+        toast.success(`Price dynamically updated to ${formatINR(data.newPrice)}`, { icon: '💰', duration: 4000 });
+        
+        setPricingHistory(prev => {
+          const newHistory = [{
+            created_at: new Date().toISOString(),
+            new_price: data.newPrice,
+            old_price: data.oldPrice,
+            demand_score: data.demandScore
+          }, ...prev];
+          return newHistory.slice(0, 10);
+        });
+      }
+    };
+    
+    socket.on('price-update', handlePriceUpdate);
+    return () => socket.off('price-update', handlePriceUpdate);
+  }, [socket, id]);
 
   const fetchProductData = async () => {
     try {
@@ -154,15 +177,6 @@ const ProductDetail = () => {
     return formatINR(price);
   };
 
-  const formatNumber = (num) => {
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(1) + 'M';
-    } else if (num >= 1000) {
-      return (num / 1000).toFixed(1) + 'K';
-    }
-    return num.toString();
-  };
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -218,7 +232,7 @@ const ProductDetail = () => {
               <div className="flex items-center space-x-2">
                 <Package className="h-5 w-5 text-gray-400" />
                 <span className="text-sm font-medium text-gray-900">
-                  {isInStock ? `${product.stock_quantity} in stock` : 'Out of stock'}
+                  {isInStock ? `In Stock` : 'Out of Stock'}
                 </span>
               </div>
               <span className={`px-3 py-1 text-xs font-medium rounded-full ${
@@ -276,25 +290,6 @@ const ProductDetail = () => {
                   )}
                 </div>
               </div>
-
-              {/* Competitor Price Comparison */}
-              {product.avg_competitor_price && (
-                <div className="pt-4 border-t border-gray-200">
-                  <p className="text-sm text-gray-600 mb-2">Market Comparison</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">Average competitor price</span>
-                    <span className="font-medium text-gray-900">
-                      {formatPrice(product.avg_competitor_price)}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between mt-1">
-                    <span className="text-sm text-gray-500">You save</span>
-                    <span className="font-medium text-success-600">
-                      {formatPrice(product.avg_competitor_price - product.current_price)}
-                    </span>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Add to Cart */}
@@ -346,6 +341,34 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
+
+        {/* Trend Analytics */}
+        {demandMetrics && (
+          <div className="mt-8 bg-white p-6 rounded-lg shadow-soft border-t-4 border-primary-500">
+            <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+              <BarChart3 className="h-6 w-6 mr-2 text-primary-600" />
+              Trend Analytics
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="text-sm text-gray-500 mb-1">Views (Last Hour)</p>
+                <p className="text-2xl font-bold text-gray-900">{demandMetrics.views_last_hour || 0}</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="text-sm text-gray-500 mb-1">Purchases (Last Hour)</p>
+                <p className="text-2xl font-bold text-gray-900">{demandMetrics.purchases_last_hour || 0}</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="text-sm text-gray-500 mb-1">Purchase Rate</p>
+                <p className="text-2xl font-bold text-success-600">{((demandMetrics.purchase_rate || 0) * 100).toFixed(1)}%</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="text-sm text-gray-500 mb-1">Demand Score</p>
+                <p className="text-2xl font-bold text-primary-600">{demandMetrics.demand_score?.toFixed(1) || 0}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Pricing History */}
         {pricingHistory.length > 0 && (

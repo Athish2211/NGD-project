@@ -17,18 +17,9 @@ export const SocketProvider = ({ children }) => {
       setConnected(true);
     });
 
-    newSocket.on('disconnect', () => {
-      console.log('Disconnected from server');
-      setConnected(false);
-    });
-
-    newSocket.on('price-update', (data) => {
-      toast.success(`Price updated for ${data.productName}: ${formatINR(data.newPrice)}`, {
-        duration: 4000,
-        icon: '💰',
-      });
-    });
-
+    // Removed global price-update toast to prevent crashes 
+    // when subscribed to many product rooms simultaneously.
+    
     newSocket.on('global-price-update', (data) => {
       console.log('Global price update:', data);
     });
