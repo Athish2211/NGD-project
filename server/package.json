@@ -9,6 +9,7 @@
     "setup-db": "node scripts/setup-safe.js",
     "seed": "node scripts/seed-working.js",
     "extract-products": "node scripts/extract-products.js",
+    "sync-ncdex-prices": "node scripts/sync-ncdex-prices.js",
     "verify-product-import": "node scripts/verify-product-import.js"
   },
   "dependencies": {

@@ -1,5 +1,8 @@
 -- Dynamic Pricing E-Commerce Database Schema
 
+-- TimescaleDB extension for time-series features
+CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
+
 -- Users table
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -136,3 +139,9 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
 
 CREATE TRIGGER update_shopping_cart_updated_at BEFORE UPDATE ON shopping_cart
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- Convert recent writes to hypertables for time-series analytics
+SELECT create_hypertable('pricing_history', 'created_at', if_not_exists => TRUE);
+SELECT create_hypertable('product_views', 'viewed_at', if_not_exists => TRUE);
+SELECT create_hypertable('competitor_prices', 'created_at', if_not_exists => TRUE);
+

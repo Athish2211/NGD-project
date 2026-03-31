@@ -86,6 +86,22 @@ pipeline {
         '''
       }
     }
+
+    stage('Sync NCDEX Live Prices') {
+      agent {
+        docker {
+          image 'node:16'
+          args '-u root'
+          reuseNode true
+        }
+      }
+      steps {
+        sh '''
+          cd server
+          npm run sync-ncdex-prices
+        '''
+      }
+    }
   }
 
   post {

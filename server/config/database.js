@@ -12,7 +12,7 @@ const pool = new Pool({
 async function connectDB() {
   try {
     const client = await pool.connect();
-    logger.info('Connected to PostgreSQL database');
+    logger.info('Connected to TimescaleDB / PostgreSQL database');
     client.release();
   } catch (error) {
     logger.error('Database connection error:', error);
