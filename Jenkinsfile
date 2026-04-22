@@ -34,13 +34,7 @@ pipeline {
     }
 
     stage('Setup (Deps)') {
-      agent {
-        docker {
-          image 'node:16'
-          args '-u root'
-          reuseNode true
-        }
-      }
+      agent any
       steps {
         // IMPORTANT: Provide DATABASE_URL in Jenkins (global env var, or withCredentials).
         sh '''
@@ -51,13 +45,7 @@ pipeline {
     }
 
     stage('Scrape Price History') {
-      agent {
-        docker {
-          image 'node:16'
-          args '-u root'
-          reuseNode true
-        }
-      }
+      agent any
       steps {
         sh '''
           node server/scripts/scrape-pricehistory.js
@@ -66,13 +54,7 @@ pipeline {
     }
 
     stage('Extract (DB Injection)') {
-      agent {
-        docker {
-          image 'node:16'
-          args '-u root'
-          reuseNode true
-        }
-      }
+      agent any
       steps {
         sh '''
           cd server
@@ -87,13 +69,7 @@ pipeline {
     }
 
     stage('Test (Verify Import)') {
-      agent {
-        docker {
-          image 'node:16'
-          args '-u root'
-          reuseNode true
-        }
-      }
+      agent any
       steps {
         sh '''
           node server/scripts/verify-product-import.js \
