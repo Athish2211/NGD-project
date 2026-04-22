@@ -1,0 +1,9 @@
+{"level":"info","message":"Connected to Redis","service":"dynamic-pricing-api","timestamp":"2026-03-23T13:16:39.791Z"}
+{"level":"info","message":"Redis client ready","service":"dynamic-pricing-api","timestamp":"2026-03-23T13:16:39.799Z"}
+{"level":"info","message":"Connected to Redis","service":"dynamic-pricing-api","timestamp":"2026-03-23T13:16:56.461Z"}
+{"level":"info","message":"Redis client ready","service":"dynamic-pricing-api","timestamp":"2026-03-23T13:16:56.470Z"}
+{"error":"SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string","level":"error","message":"Database query error:","service":"dynamic-pricing-api","text":"SELECT COUNT(*) as count FROM products WHERE is_active = true","timestamp":"2026-03-24T04:28:15.216Z"}
+{"error":"SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string","level":"error","message":"Database query error:","service":"dynamic-pricing-api","text":"SELECT COUNT(*) as count FROM products WHERE is_active = true","timestamp":"2026-03-24T04:28:24.858Z"}
+{"error":"SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string","level":"error","message":"Database query error:","service":"dynamic-pricing-api","text":"SELECT COUNT(*) as count FROM products WHERE is_active = true","timestamp":"2026-03-24T04:29:42.785Z"}
+{"level":"info","message":"Connected to Redis","service":"dynamic-pricing-api","timestamp":"2026-03-24T04:30:37.309Z"}
+{"level":"info","message":"Redis client ready","service":"dynamic-pricing-api","timestamp":"2026-03-24T04:30:37.317Z"}

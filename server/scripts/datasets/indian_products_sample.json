@@ -1,0 +1,120 @@
+[
+  {
+    "id": "boAt-Rockerz-255-Pro",
+    "name": "boAt Rockerz 255 Pro",
+    "base_price": 599,
+    "current_price": 549,
+    "category": "Electronics",
+    "image_url": "https://placehold.co/600x450/png?text=boAt+Rockerz+255+Pro",
+    "inventory": 120
+  },
+  {
+    "id": "redmi-note-12-4g",
+    "name": "Redmi Note 12 4G",
+    "base_price": 12999,
+    "current_price": 11999,
+    "category": "Electronics",
+    "image_url": "https://placehold.co/600x450/png?text=Redmi+Note+12+4G",
+    "inventory": 70
+  },
+  {
+    "id": "samsung-galaxy-a14",
+    "name": "Samsung Galaxy A14",
+    "base_price": 13999,
+    "current_price": 12499,
+    "category": "Electronics",
+    "image_url": "https://placehold.co/600x450/png?text=Samsung+Galaxy+A14",
+    "inventory": 65
+  },
+  {
+    "id": "sony-ps5-dualsense",
+    "name": "Sony DualSense Wireless Controller",
+    "base_price": 5499,
+    "current_price": 4999,
+    "category": "Electronics",
+    "image_url": "https://placehold.co/600x450/png?text=Sony+DualSense+Wireless+Controller",
+    "inventory": 80
+  },
+  {
+    "id": "anker-soundcore-mini-3",
+    "name": "Anker Soundcore Mini 3",
+    "base_price": 2999,
+    "current_price": 2699,
+    "category": "Electronics",
+    "image_url": "https://placehold.co/600x450/png?text=Anker+Soundcore+Mini+3",
+    "inventory": 95
+  },
+  {
+    "id": "puma-casual-shoe-men",
+    "name": "Puma Casual Shoe (Men)",
+    "base_price": 3999,
+    "current_price": 3499,
+    "category": "Sports",
+    "image_url": "https://placehold.co/600x450/png?text=Puma+Casual+Shoe+Men",
+    "inventory": 50
+  },
+  {
+    "id": "nike-running-shoes",
+    "name": "Nike Running Shoes",
+    "base_price": 4999,
+    "current_price": 4599,
+    "category": "Sports",
+    "image_url": "https://placehold.co/600x450/png?text=Nike+Running+Shoes",
+    "inventory": 40
+  },
+  {
+    "id": "zara-denim-jeans",
+    "name": "Denim Jeans (Straight Fit)",
+    "base_price": 2499,
+    "current_price": 2199,
+    "category": "Clothing",
+    "image_url": "https://placehold.co/600x450/png?text=Denim+Jeans+Straight+Fit",
+    "inventory": 110
+  },
+  {
+    "id": "roadster-hoodie",
+    "name": "Roadster Hoodie",
+    "base_price": 1999,
+    "current_price": 1699,
+    "category": "Clothing",
+    "image_url": "https://placehold.co/600x450/png?text=Roadster+Hoodie",
+    "inventory": 90
+  },
+  {
+    "id": "home-kitchen-coffee-maker",
+    "name": "Automatic Drip Coffee Maker",
+    "base_price": 4999,
+    "current_price": 4599,
+    "category": "Home & Garden",
+    "image_url": "https://placehold.co/600x450/png?text=Automatic+Drip+Coffee+Maker",
+    "inventory": 35
+  },
+  {
+    "id": "bamboo-yoga-mat",
+    "name": "Bamboo Yoga Mat",
+    "base_price": 1299,
+    "current_price": 1099,
+    "category": "Sports",
+    "image_url": "https://placehold.co/600x450/png?text=Bamboo+Yoga+Mat",
+    "inventory": 140
+  },
+  {
+    "id": "book-python-crash-course",
+    "name": "Python Crash Course (Book)",
+    "base_price": 699,
+    "current_price": 599,
+    "category": "Books",
+    "image_url": "https://placehold.co/600x450/png?text=Python+Crash+Course+Book",
+    "inventory": 200
+  },
+  {
+    "id": "book-data-structures",
+    "name": "Data Structures & Algorithms (Book)",
+    "base_price": 799,
+    "current_price": 699,
+    "category": "Books",
+    "image_url": "https://placehold.co/600x450/png?text=Data+Structures+%26+Algorithms+Book",
+    "inventory": 180
+  }
+]
+

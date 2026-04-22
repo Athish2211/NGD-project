@@ -1,0 +1,33 @@
+{
+  "name": "dynamic-pricing-server",
+  "version": "1.0.0",
+  "description": "Backend API for dynamic pricing e-commerce platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "setup-db": "node scripts/setup-safe.js",
+    "seed": "node scripts/seed-working.js",
+    "extract-products": "node scripts/extract-products.js",
+    "verify-product-import": "node scripts/verify-product-import.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-cron": "^3.0.3",
+    "pg": "^8.11.3",
+    "redis": "^4.6.10",
+    "socket.io": "^4.7.4",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
