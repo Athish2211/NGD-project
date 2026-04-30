@@ -78,11 +78,8 @@ pipeline {
                     echo 'Deploying application using PM2...'
                     
                     if (isUnix()) {
-                        // Stop and delete existing process if it exists, ignore errors if it doesn't
                         sh 'npx pm2 delete dynamic-pricing-app || true'
-                        // Start the new process
                         sh 'npx pm2 start npm --name "dynamic-pricing-app" -- start'
-                        // Save the PM2 list to resurrect on reboot
                         sh 'npx pm2 save'
                     } else {
                         catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
