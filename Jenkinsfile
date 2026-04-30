@@ -9,7 +9,7 @@ pipeline {
     }
 
     environment {
-        CI = 'true'
+        CI = 'false'
     }
 
     stages {
