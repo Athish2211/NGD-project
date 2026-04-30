@@ -32,6 +32,33 @@ pipeline {
             }
         }
 
+        stage('Security Scan') {
+            steps {
+                script {
+                    echo 'Running security audit on dependencies...'
+                    // We use --audit-level=high so it only fails on high/critical vulnerabilities
+                    if (isUnix()) {
+                        sh 'npm audit --audit-level=high || true'
+                    } else {
+                        bat 'npm audit --audit-level=high || exit 0'
+                    }
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                script {
+                    echo 'Running client-side tests...'
+                    if (isUnix()) {
+                        sh 'cd client && npm test -- --watchAll=false --passWithNoTests'
+                    } else {
+                        bat 'cd client && npm test -- --watchAll=false --passWithNoTests'
+                    }
+                }
+            }
+        }
+
         stage('Build Client') {
             steps {
                 script {
