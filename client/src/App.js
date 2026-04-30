@@ -6,13 +6,13 @@ import { SocketProvider } from './contexts/SocketContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Products from './pages/Products';
-import ProductDetail from './pages/ProductDetail-fixed';
-import Cart from './pages/Cart-fixed';
+import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
 import Orders from './pages/Orders';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Analytics from './pages/Analytics-fixed';
+import Analytics from './pages/Analytics';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {

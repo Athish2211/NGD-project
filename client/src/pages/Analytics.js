@@ -19,6 +19,43 @@ import {
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart as RePieChart, Pie, Cell } from 'recharts';
 import toast from 'react-hot-toast';
 
+const fillMissingDates = (data, timeframe) => {
+  if (!data) return [];
+  const days = parseInt(timeframe.replace('d', '')) || 7;
+  const filledData = [];
+  const now = new Date();
+  
+  const dataMap = new Map();
+  if (Array.isArray(data)) {
+    data.forEach(item => {
+      if (!item.date) return;
+      const d = new Date(item.date);
+      if (!isNaN(d)) dataMap.set(d.toISOString().split('T')[0], item);
+    });
+  }
+
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date(now);
+    date.setDate(date.getDate() - i);
+    const dateStr = date.toISOString().split('T')[0];
+    const shortDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    
+    if (dataMap.has(dateStr)) {
+      filledData.push({ ...dataMap.get(dateStr), date: shortDate, rawDate: dateStr });
+    } else {
+      filledData.push({
+        date: shortDate,
+        rawDate: dateStr,
+        price_changes: 0,
+        avg_price_change: 0,
+        total_orders: 0,
+        total_revenue: 0
+      });
+    }
+  }
+  return filledData;
+};
+
 const Analytics = () => {
   const { user } = useAuth();
   const { socket, joinProductRoom } = useSocket();
@@ -40,8 +77,8 @@ const Analytics = () => {
         analyticsAPI.getDashboard(user?.id)
       ]);
 
-      setPricingData(pricingResponse.data);
-      setOrderData(orderResponse.data);
+      setPricingData(fillMissingDates(pricingResponse.data, timeframe));
+      setOrderData(fillMissingDates(orderResponse.data, timeframe));
       setCompetitorData(competitorResponse.data);
       setDashboardData(dashboardResponse.data);
     } catch (error) {
@@ -138,10 +175,11 @@ const Analytics = () => {
     const dynamicPricingData = [];
     const dynamicOrderData = [];
     
-    for (let i = 6; i >= 0; i--) {
+    const days = parseInt(timeframe.replace('d', '')) || 7;
+    for (let i = days - 1; i >= 0; i--) {
       const date = new Date(now);
       date.setDate(date.getDate() - i);
-      const dateStr = date.toISOString().split('T')[0];
+      const shortDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       
       // Generate realistic dynamic data
       const priceChanges = Math.floor(Math.random() * 8) + 2;
@@ -150,13 +188,13 @@ const Analytics = () => {
       const revenue = orders * (Math.random() * 100 + 50);
       
       dynamicPricingData.push({
-        date: dateStr,
+        date: shortDate,
         price_changes: priceChanges,
         avg_price_change: parseFloat(avgPriceChange)
       });
       
       dynamicOrderData.push({
-        date: dateStr,
+        date: shortDate,
         total_orders: orders,
         total_revenue: parseFloat(revenue.toFixed(2))
       });

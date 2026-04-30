@@ -10,9 +10,9 @@ const pool = new Pool({
 
 async function setupDatabase() {
   try {
-    console.log('🔗 Testing database connection...');
+    console.log('Testing database connection...');
     const client = await pool.connect();
-    console.log('✅ Connected to PostgreSQL!');
+    console.log('Connected to PostgreSQL!');
     
     // Check if tables already exist
     const tablesExist = await client.query(`
@@ -24,23 +24,23 @@ async function setupDatabase() {
     `);
     
     if (tablesExist.rows[0].exists) {
-      console.log('✅ Database tables already exist - skipping schema creation');
+      console.log('Database tables already exist - skipping schema creation');
     } else {
-      console.log('📖 Reading schema file...');
+      console.log('Reading schema file...');
       const schemaPath = path.join(__dirname, '../../database/schema.sql');
       const schema = await fs.readFile(schemaPath, 'utf8');
-      console.log('✅ Schema file read successfully');
+      console.log('Schema file read successfully');
       
-      console.log('🔧 Creating database schema...');
+      console.log('Creating database schema...');
       await client.query(schema);
-      console.log('✅ Database schema created!');
+      console.log('Database schema created!');
     }
     
     client.release();
-    console.log('🎉 Database setup completed!');
+    console.log('Database setup completed!');
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error:', error.message);
+    console.error('Error:', error.message);
     process.exit(1);
   } finally {
     await pool.end();

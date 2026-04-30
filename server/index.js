@@ -15,9 +15,9 @@ const pricingEngine = require('./services/pricingEngine');
 
 // Import routes
 const productRoutes = require('./routes/products');
-const orderRoutes = require('./routes/orders-fixed');
+const orderRoutes = require('./routes/orders');
 const userRoutes = require('./routes/users');
-const analyticsRoutes = require('./routes/analytics-fixed');
+const analyticsRoutes = require('./routes/analytics');
 
 const app = express();
 const server = http.createServer(app);
@@ -115,10 +115,10 @@ async function startServer() {
           let data = '';
           res.on('data', chunk => data += chunk);
           res.on('end', () => {
-            logger.info('✅ Self-test successful:', data);
+            logger.info('Self-test successful:', data);
           });
         }).on('error', (err) => {
-          logger.error('❌ Self-test failed:', err.message);
+          logger.error('Self-test failed:', err.message);
         });
       }, 2000);
     });

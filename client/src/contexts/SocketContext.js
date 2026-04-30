@@ -27,14 +27,12 @@ export const SocketProvider = ({ children }) => {
     newSocket.on('new-order', (data) => {
       toast.success(`New order #${data.orderNumber} received!`, {
         duration: 5000,
-        icon: '📦',
       });
     });
 
     newSocket.on('order-status-update', (data) => {
       toast(`Order #${data.orderId} status: ${data.status}`, {
         duration: 4000,
-        icon: data.status === 'completed' ? '✅' : '📋',
       });
     });
 

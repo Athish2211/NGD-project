@@ -3,8 +3,7 @@ pipeline {
 
     // Triggers the pipeline automatically when changes are pushed to GitHub
     triggers {
-        // Poll every minute to fetch changes automatically.
-        // For better performance in production, consider configuring a GitHub Webhook instead.
+        //Polling SCM every minute to fetch changes automatically
         pollSCM('* * * * *')
     }
 
@@ -59,7 +58,6 @@ pipeline {
                         // Save the PM2 list to resurrect on reboot
                         sh 'npx pm2 save'
                     } else {
-                        // For Windows environments
                         catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
                             bat 'npx pm2 delete dynamic-pricing-app'
                         }

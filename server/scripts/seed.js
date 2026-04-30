@@ -14,7 +14,7 @@ async function seedDatabase() {
   try {
     await client.query('BEGIN');
     
-    console.log('🌱 Seeding initial data...');
+    console.log('Seeding initial data...');
     
     // Insert demo user
     const demoUserPassword = await bcrypt.hash('demo123', 10);
@@ -25,7 +25,7 @@ async function seedDatabase() {
       ON CONFLICT (email) DO NOTHING
     `, ['demo@example.com', demoUserPassword, 'Demo', 'User']);
     
-    console.log('✅ Demo user created');
+    console.log('Demo user created');
     
     // Insert categories
     const categories = [
@@ -43,7 +43,7 @@ async function seedDatabase() {
       );
     }
     
-    console.log('✅ Categories created');
+    console.log('Categories created');
     
     // Insert sample products
     const products = [
@@ -121,7 +121,7 @@ async function seedDatabase() {
       ]);
     }
     
-    console.log('✅ Products created');
+    console.log('Products created');
     
     // Insert competitor prices
     const competitorPrices = [
@@ -140,14 +140,14 @@ async function seedDatabase() {
       );
     }
     
-    console.log('✅ Competitor prices created');
+    console.log('Competitor prices created');
     
     await client.query('COMMIT');
-    console.log('🎉 Database seeding completed successfully!');
+    console.log('Database seeding completed successfully!');
     
   } catch (error) {
     await client.query('ROLLBACK');
-    console.error('❌ Seeding error:', error.message);
+    console.error('Seeding error:', error.message);
     throw error;
   } finally {
     client.release();

@@ -43,16 +43,16 @@ const ProductDetail = () => {
     const handlePriceUpdate = (data) => {
       if (String(data.productId) === String(id)) {
         setCurrentPrice(data.newPrice);
-        toast.success(`Price dynamically updated to ${formatINR(data.newPrice)}`, { icon: '💰', duration: 4000 });
+        toast.success(`Price dynamically updated to ${formatINR(data.newPrice)}`, { duration: 4000 });
         
         setPricingHistory(prev => {
-          const newHistory = [{
+          const newHistory = [...prev, {
             created_at: new Date().toISOString(),
             new_price: data.newPrice,
             old_price: data.oldPrice,
             demand_score: data.demandScore
-          }, ...prev];
-          return newHistory.slice(0, 10);
+          }];
+          return newHistory.length > 10 ? newHistory.slice(newHistory.length - 10) : newHistory;
         });
       }
     };
@@ -105,7 +105,7 @@ const ProductDetail = () => {
 
       setProduct(productResponse.data);
       setDemandMetrics(demandResponse.data);
-      setPricingHistory(historyResponse.data);
+      setPricingHistory(Array.isArray(historyResponse.data) ? historyResponse.data.reverse() : []);
       setCurrentPrice(productResponse.data.current_price);
     } catch (error) {
       console.error('Error fetching product data:', error);
@@ -378,9 +378,21 @@ const ProductDetail = () => {
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={pricingHistory}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="created_at" />
+                  <XAxis 
+                    dataKey="created_at" 
+                    tickFormatter={(tick) => {
+                      const d = new Date(tick);
+                      return isNaN(d) ? '' : d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    }} 
+                  />
                   <YAxis />
-                  <Tooltip formatter={(value) => formatPrice(value)} />
+                  <Tooltip 
+                    formatter={(value) => formatPrice(value)}
+                    labelFormatter={(label) => {
+                      const d = new Date(label);
+                      return isNaN(d) ? label : d.toLocaleString();
+                    }}
+                  />
                   <Line type="monotone" dataKey="new_price" stroke="#3b82f6" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
