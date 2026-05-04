@@ -75,17 +75,17 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 script {
-                    echo 'Deploying application using PM2...'
+                    echo 'Deploying application with full dev environment using PM2...'
                     
                     if (isUnix()) {
                         sh 'npx pm2 delete dynamic-pricing-app || true'
-                        sh 'npx pm2 start npm --name "dynamic-pricing-app" -- start'
+                        sh 'npx pm2 start npm --name "dynamic-pricing-app" -- run dev'
                         sh 'npx pm2 save'
                     } else {
                         catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
                             bat 'npx pm2 delete dynamic-pricing-app'
                         }
-                        bat 'npx pm2 start npm --name "dynamic-pricing-app" -- start'
+                        bat 'npx pm2 start npm --name "dynamic-pricing-app" -- run dev'
                         bat 'npx pm2 save'
                     }
                 }

@@ -73,7 +73,7 @@ const Home = () => {
           </h1>
           
           <p className="text-lg sm:text-xl text-gray-300 max-w-2xl font-light leading-relaxed">
-            That continuously adapts to market demands and trends, guaranteeing you always get the absolute best value instantly.
+            Intelligent ecosystem that continuously adapts to market demands and trends, guaranteeing you always get the absolute best value instantly.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 pt-8 justify-center w-full">

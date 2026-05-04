@@ -1183,3 +1183,112 @@
 {"level":"info","message":"Client connected: RKYo_bdPEnlP_KnwAAAC","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:10:27.806Z"}
 {"level":"info","message":"Client disconnected: RKYo_bdPEnlP_KnwAAAC","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:10:27.931Z"}
 {"level":"info","message":"Client connected: UG4BRHHlvmVCXsmyAAAF","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:10:28.247Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.606Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.606Z"}
+{"level":"info","message":"Price updated for product 3: 12079.32 -> 11899.15 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.652Z"}
+{"level":"info","message":"Price updated for product 12: 625.16 -> 624 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.663Z"}
+{"level":"info","message":"Price updated for product 13: 707.38 -> 695.24 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.675Z"}
+{"level":"info","message":"Price updated for product 7: 4847.04 -> 4861.76 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.686Z"}
+{"level":"info","message":"Price updated for product 2: 11858.87 -> 11556.53 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.698Z"}
+{"level":"info","message":"Price updated for product 10: 4343.60 -> 4302.76 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.712Z"}
+{"level":"info","message":"Price updated for product 11: 1216.69 -> 1213.88 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.722Z"}
+{"level":"info","message":"Price updated for product 8: 2178.86 -> 2200.34 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.731Z"}
+{"level":"info","message":"Price updated for product 1: 523.70 -> 511.01 (Low demand)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.742Z"}
+{"level":"info","message":"Price updated for product 9: 1745.42 -> 1744.64 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.752Z"}
+{"level":"info","message":"Price updated for product 5: 2658.03 -> 2607.97 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.762Z"}
+{"level":"info","message":"Price updated for product 6: 3401.30 -> 3399.15 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.772Z"}
+{"level":"info","message":"Price update completed. Updated 12 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.772Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:11:00.772Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.185Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.186Z"}
+{"level":"info","message":"Price updated for product 12: 624.00 -> 628.7 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.212Z"}
+{"level":"info","message":"Price updated for product 13: 695.24 -> 688.28 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.223Z"}
+{"level":"info","message":"Price updated for product 7: 4861.76 -> 4890.27 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.231Z"}
+{"level":"info","message":"Price updated for product 2: 11556.53 -> 11429.04 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.241Z"}
+{"level":"info","message":"Price updated for product 10: 4302.76 -> 4310.75 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.250Z"}
+{"level":"info","message":"Price updated for product 11: 1213.88 -> 1208.61 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.258Z"}
+{"level":"info","message":"Price updated for product 8: 2200.34 -> 2205.21 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.268Z"}
+{"level":"info","message":"Price updated for product 1: 511.01 -> 509.15 (Low demand)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.276Z"}
+{"level":"info","message":"Price updated for product 9: 1744.64 -> 1744.69 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.285Z"}
+{"level":"info","message":"Price updated for product 5: 2607.97 -> 2549.15 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.293Z"}
+{"level":"info","message":"Price update completed. Updated 10 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.295Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:12:00.295Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.745Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.746Z"}
+{"level":"info","message":"Price updated for product 13: 688.28 -> 679.15 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.767Z"}
+{"level":"info","message":"Price updated for product 7: 4890.27 -> 4870 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.776Z"}
+{"level":"info","message":"Price updated for product 2: 11429.04 -> 11273.6 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.787Z"}
+{"level":"info","message":"Price updated for product 10: 4310.75 -> 4290.78 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.798Z"}
+{"level":"info","message":"Price updated for product 11: 1208.61 -> 1219.38 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.807Z"}
+{"level":"info","message":"Price updated for product 8: 2205.21 -> 2199.17 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.817Z"}
+{"level":"info","message":"Price updated for product 9: 1744.69 -> 1760.19 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.828Z"}
+{"level":"info","message":"Price updated for product 12: 628.70 -> 622.46 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.845Z"}
+{"level":"info","message":"Price update completed. Updated 8 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.846Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:13:00.846Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.344Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.344Z"}
+{"level":"info","message":"Price updated for product 7: 4870.00 -> 4885.82 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.370Z"}
+{"level":"info","message":"Price updated for product 2: 11273.60 -> 11049.15 (Low demand, High purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.379Z"}
+{"level":"info","message":"Price updated for product 10: 4290.78 -> 4311.1 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.387Z"}
+{"level":"info","message":"Price updated for product 11: 1219.38 -> 1223.27 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.394Z"}
+{"level":"info","message":"Price updated for product 8: 2199.17 -> 2203.7 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.402Z"}
+{"level":"info","message":"Price updated for product 9: 1760.19 -> 1772.67 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.409Z"}
+{"level":"info","message":"Price updated for product 12: 622.46 -> 619.19 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.416Z"}
+{"level":"info","message":"Price update completed. Updated 7 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.417Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:14:00.417Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:00.918Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:00.919Z"}
+{"level":"info","message":"Price updated for product 10: 4311.10 -> 4299.94 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:00.969Z"}
+{"level":"info","message":"Price updated for product 11: 1223.27 -> 1215.2 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:00.983Z"}
+{"level":"info","message":"Price updated for product 8: 2203.70 -> 2220.04 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:00.996Z"}
+{"level":"info","message":"Price updated for product 9: 1772.67 -> 1781.63 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:01.011Z"}
+{"level":"info","message":"Price updated for product 12: 619.19 -> 615.06 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:01.026Z"}
+{"level":"info","message":"Price updated for product 6: 3399.15 -> 3427.54 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:01.044Z"}
+{"level":"info","message":"Price updated for product 7: 4885.82 -> 4843.91 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:01.056Z"}
+{"level":"info","message":"Price update completed. Updated 7 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:01.056Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:15:01.057Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.307Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.307Z"}
+{"level":"info","message":"Price updated for product 10: 4299.94 -> 4284.13 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.343Z"}
+{"level":"info","message":"Price updated for product 11: 1215.20 -> 1204.11 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.355Z"}
+{"level":"info","message":"Price updated for product 8: 2220.04 -> 2237.09 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.366Z"}
+{"level":"info","message":"Price updated for product 9: 1781.63 -> 1785.37 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.375Z"}
+{"level":"info","message":"Price updated for product 12: 615.06 -> 619.42 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.387Z"}
+{"level":"info","message":"Price updated for product 6: 3427.54 -> 3399.15 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.396Z"}
+{"level":"info","message":"Price updated for product 7: 4843.91 -> 4884.27 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.410Z"}
+{"level":"info","message":"Price update completed. Updated 7 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.410Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:00.410Z"}
+{"level":"info","message":"Client disconnected: UG4BRHHlvmVCXsmyAAAF","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:08.991Z"}
+{"level":"info","message":"Client connected: WGcoQwSYcFaO5fowAAAI","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:16:09.543Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:00.921Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:00.922Z"}
+{"level":"info","message":"Price updated for product 6: 3399.15 -> 3405.53 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:00.965Z"}
+{"level":"info","message":"Price updated for product 7: 4884.27 -> 4898.34 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:00.976Z"}
+{"level":"info","message":"Price updated for product 10: 4284.13 -> 4249.15 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:01.018Z"}
+{"level":"info","message":"Price updated for product 11: 1204.11 -> 1214.68 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:01.032Z"}
+{"level":"info","message":"Price updated for product 8: 2237.09 -> 2219.19 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:01.044Z"}
+{"level":"info","message":"Price updated for product 9: 1785.37 -> 1794.31 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:01.063Z"}
+{"level":"info","message":"Price updated for product 12: 619.42 -> 622.77 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:01.077Z"}
+{"level":"info","message":"Price update completed. Updated 7 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:01.077Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:17:01.077Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.461Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.461Z"}
+{"level":"info","message":"Price updated for product 6: 3405.53 -> 3402.08 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.502Z"}
+{"level":"info","message":"Price updated for product 7: 4898.34 -> 4880.03 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.514Z"}
+{"level":"info","message":"Price updated for product 11: 1214.68 -> 1224.64 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.530Z"}
+{"level":"info","message":"Price updated for product 8: 2219.19 -> 2216.5 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.540Z"}
+{"level":"info","message":"Price updated for product 9: 1794.31 -> 1809.98 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.550Z"}
+{"level":"info","message":"Price updated for product 12: 622.77 -> 627.88 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.561Z"}
+{"level":"info","message":"Price update completed. Updated 6 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.567Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:18:00.567Z"}
+{"level":"info","message":"Running pricing engine...","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.050Z"}
+{"level":"info","message":"Starting price update for all products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.051Z"}
+{"level":"info","message":"Price updated for product 10: 4249.15 -> 4266.6 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.092Z"}
+{"level":"info","message":"Price updated for product 6: 3402.08 -> 3427.18 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.103Z"}
+{"level":"info","message":"Price updated for product 7: 4880.03 -> 4882.99 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.116Z"}
+{"level":"info","message":"Price updated for product 11: 1224.64 -> 1219.13 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.125Z"}
+{"level":"info","message":"Price updated for product 8: 2216.50 -> 2206.48 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.134Z"}
+{"level":"info","message":"Price updated for product 9: 1809.98 -> 1820.94 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.143Z"}
+{"level":"info","message":"Price updated for product 12: 627.88 -> 633.47 (Low demand, Low purchase rate)","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.151Z"}
+{"level":"info","message":"Price update completed. Updated 7 products","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.152Z"}
+{"level":"info","message":"Pricing engine completed successfully","service":"dynamic-pricing-api","timestamp":"2026-05-04T05:19:00.152Z"}
