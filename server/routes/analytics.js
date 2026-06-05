@@ -6,12 +6,15 @@ const logger = require('../utils/logger');
 function getDateWindow(timeframe) {
   switch (timeframe) {
     case '1d':
-      return "CURRENT_DATE";
+      return "CURRENT_TIMESTAMP - INTERVAL '24 hours'";
     case '30d':
-      return "CURRENT_DATE - INTERVAL '30 days'";
+      return "CURRENT_TIMESTAMP - INTERVAL '30 days'";
     case '7d':
+      return "CURRENT_TIMESTAMP - INTERVAL '7 days'";
+    case 'all':
+      return "TIMESTAMP '1970-01-01'";
     default:
-      return "CURRENT_DATE - INTERVAL '7 days'";
+      return "CURRENT_TIMESTAMP - INTERVAL '7 days'";
   }
 }
 
@@ -111,8 +114,10 @@ router.get('/competitor-prices', async (req, res) => {
 // Get dashboard analytics (scoped by user purchases when userId is provided)
 router.get('/dashboard', async (req, res) => {
   try {
+    const timeframe = req.query.timeframe || '7d';
     const userId = parseInt(req.query.userId || '0', 10) || 1;
     const userParams = [userId];
+    const windowStart = getDateWindow(timeframe);
 
     const activeProductsResult = await query(`
       SELECT
@@ -138,7 +143,7 @@ router.get('/dashboard', async (req, res) => {
         COALESCE(SUM(total_amount), 0)::numeric(12,2) as total_revenue,
         COALESCE(AVG(total_amount), 0)::numeric(12,2) as avg_order_value
       FROM orders
-      WHERE user_id = $1
+      WHERE user_id = $1 AND created_at >= ${windowStart}
     `, userParams);
 
     const topProductsResult = await query(`
@@ -151,7 +156,7 @@ router.get('/dashboard', async (req, res) => {
       FROM orders o
       JOIN order_items oi ON oi.order_id = o.id
       JOIN products p ON p.id = oi.product_id
-      WHERE o.user_id = $1
+      WHERE o.user_id = $1 AND o.created_at >= ${windowStart}
       GROUP BY p.id, p.name
       ORDER BY orders DESC
       LIMIT 10
@@ -167,7 +172,7 @@ router.get('/dashboard', async (req, res) => {
         COUNT(oi.id)::int AS item_count
       FROM orders o
       LEFT JOIN order_items oi ON oi.order_id = o.id
-      WHERE o.user_id = $1
+      WHERE o.user_id = $1 AND o.created_at >= ${windowStart}
       GROUP BY o.id
       ORDER BY o.created_at DESC
       LIMIT 10

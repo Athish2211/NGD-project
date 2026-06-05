@@ -70,7 +70,8 @@ export const analyticsAPI = {
   getPricing: (timeframe = '7d') => api.get('analytics/pricing', { params: { timeframe } }),
   getDemand: (productId) => api.get(`analytics/demand/${productId}`),
   getCompetitorPrices: () => api.get('analytics/competitor-prices'),
-  getDashboard: (userId) => api.get('analytics/dashboard', { params: userId ? { userId } : {} }),
+  getDashboard: (userId, timeframe = '7d') =>
+    api.get('analytics/dashboard', { params: userId ? { userId, timeframe } : { timeframe } }),
   getOrders: (timeframe = '7d', userId) =>
     api.get('analytics/orders', { params: userId ? { timeframe, userId } : { timeframe } }),
 };

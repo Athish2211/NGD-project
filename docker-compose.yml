@@ -32,7 +32,9 @@ services:
       retries: 20
 
   jenkins:
-    image: jenkins/jenkins:lts-jdk17
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
     container_name: dynamic-pricing-jenkins
     restart: unless-stopped
     ports:
@@ -48,3 +50,4 @@ volumes:
   postgres_data:
   redis_data:
   jenkins_home:
+    external: true

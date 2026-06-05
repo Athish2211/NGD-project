@@ -74,7 +74,7 @@ const Analytics = () => {
         analyticsAPI.getPricing(timeframe),
         analyticsAPI.getOrders(timeframe, user?.id),
         analyticsAPI.getCompetitorPrices(),
-        analyticsAPI.getDashboard(user?.id)
+        analyticsAPI.getDashboard(user?.id, timeframe)
       ]);
 
       setPricingData(fillMissingDates(pricingResponse.data, timeframe));
@@ -308,6 +308,7 @@ const Analytics = () => {
               <option value="1d">Last 24 Hours</option>
               <option value="7d">Last 7 Days</option>
               <option value="30d">Last 30 Days</option>
+              <option value="all">All Time</option>
             </select>
           </div>
         </div>

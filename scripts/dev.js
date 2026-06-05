@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
-const { spawn } = require('child_process');
+const { spawn, spawnSync } = require('child_process');
 
 function loadEnvFile(envFilePath) {
   const content = fs.readFileSync(envFilePath, 'utf8');
@@ -115,6 +115,52 @@ function spawnNpm(commandArgs) {
   });
 }
 
+function findDockerCommand() {
+  const candidates = ['docker', 'docker.exe'];
+  for (const command of candidates) {
+    const result = spawnSync(command, ['--version'], { shell: true, stdio: 'pipe' });
+    if (result.status === 0) return command;
+  }
+  return null;
+}
+
+function getRunningComposeServices(dockerCommand) {
+  const result = spawnSync(dockerCommand, ['compose', 'ps', '--services', '--filter', 'status=running'], {
+    cwd: path.join(__dirname, '..'),
+    shell: true,
+    encoding: 'utf8',
+  });
+
+  if (result.status !== 0) return [];
+
+  return result.stdout
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+function ensureBackingServices() {
+  const dockerCommand = findDockerCommand();
+  if (!dockerCommand) {
+    throw new Error('Docker is not available. Start Postgres and Redis manually, then run npm run dev again.');
+  }
+
+  const runningServices = getRunningComposeServices(dockerCommand);
+
+  if (!runningServices.includes('postgres') || !runningServices.includes('redis')) {
+    console.log('Starting PostgreSQL and Redis with Docker Compose...');
+    const result = spawnSync(dockerCommand, ['compose', 'up', '-d', 'postgres', 'redis'], {
+      cwd: path.join(__dirname, '..'),
+      shell: true,
+      stdio: 'inherit',
+    });
+
+    if (result.status !== 0) {
+      throw new Error('Failed to start PostgreSQL and Redis with Docker Compose.');
+    }
+  }
+}
+
 async function main() {
   const env = loadEnvFile(path.join(__dirname, '..', 'server', '.env'));
   const PORT = Number(env.PORT || 3001);
@@ -124,6 +170,9 @@ async function main() {
   if (!DATABASE_URL) {
     throw new Error('Missing DATABASE_URL in server/.env');
   }
+
+  // Ensure backing services are up before the app starts.
+  ensureBackingServices();
 
   // Wait for backing services to be ready (prevents “DB busy / not ready” startup errors).
   console.log('Waiting for Postgres...');
